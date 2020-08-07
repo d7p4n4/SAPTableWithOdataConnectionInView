@@ -13,7 +13,7 @@ sap.ui.controller("demo.demo", {
 			oModel.setData({modelData: data});
 			var oTable = sap.ui.getCore().byId('BSTAB1');
 			oTable.setModel(oModel);
-			oTable.bindRows("/modelData");
+			oTable.bindRows("/modelData"); 
 		});
 	},
 
