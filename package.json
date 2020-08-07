@@ -1,0 +1,10 @@
+{
+    "name": "SevenWonders",
+    "description": "",
+    "version": "1.20200805.1",
+    "private": "true",
+    "dependencies": {
+        "express": "^3.21.2",
+        "node-inspector": "0.7.x"
+    }
+}
