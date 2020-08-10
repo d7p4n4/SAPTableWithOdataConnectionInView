@@ -19,12 +19,12 @@ sap.ui.jsview("demo.demo", {
 			
 		
 		/*var oModel = new sap.ui.model.odata.ODataModel("https://localhost:44315/odata/", true);
-
+*/
 		var oModel = new sap.ui.model.odata.v4.ODataModel({
 			groupId: "$direct",
 			synchronizationMode: "None",
 			serviceUrl: "https://localhost:44315/odata/"
-		})*/
+		})
 
 		var oControl;
 		this.oSHTable = new sap.ui.table.Table("BSTAB1",{
@@ -46,17 +46,23 @@ sap.ui.jsview("demo.demo", {
 	  
 	  */
 		var oColumn = new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Name"}),
-			template: new sap.ui.commons.TextView().bindProperty("text", "/name"),
-			sortProperty: "name",
-			filterProperty: "name",
+			label: new sap.ui.commons.Label({text: "ID"}),
+			template: new sap.ui.commons.TextField().bindProperty("value", {
+				path: "id",
+				type: new sap.ui.model.type.Integer()
+			}),
+			sortProperty: "id",
+			filterProperty: "id",
 			});
 
 		this.oSHTable.addColumn(oColumn);
-		/*
+		
 		oColumn = new sap.ui.table.Column({
 			label: new sap.ui.commons.Label({text: "Name"}),
-			template: new sap.ui.commons.TextView().bindProperty("text", "name"),
+			template: new sap.ui.commons.TextField().bindProperty("value", {
+				path: "name",
+				type: new sap.ui.model.type.String()
+			}),
 			sortProperty: "name",
 			filterProperty: "name",
 			});
@@ -64,14 +70,17 @@ sap.ui.jsview("demo.demo", {
 		this.oSHTable.addColumn(oColumn);
 		
 		oColumn = new sap.ui.table.Column({
-			label: new sap.ui.commons.Label({text: "Email"}),
-			template: new sap.ui.commons.TextView().bindProperty("text", "email"),
-			sortProperty: "email",
-			filterProperty: "email",
+			label: new sap.ui.commons.Label({text: "Registration Date"}),
+			template: new sap.ui.commons.TextField().bindProperty("value", {
+				path: "createdAt",
+				type: new sap.ui.model.odata.type.DateTimeOffset({pattern: "yyyy-MM-dd HH:mm"})
+			}),
+			sortProperty: "createdAt",
+			filterProperty: "createdAt",
 			});
 
 		this.oSHTable.addColumn(oColumn);
- 		 
+ 		 /*
     	  //Table Column Definitions
     	  var oMeta = oModel.getServiceMetadata();
           var oControl;
@@ -82,17 +91,17 @@ sap.ui.jsview("demo.demo", {
 	          oControl = new sap.ui.commons.TextField().bindProperty("value",property.name);
 	          oTable.addColumn(new sap.ui.table.Column({label:new sap.ui.commons.Label({text: property.name}), template: oControl, sortProperty: property.name, filterProperty: property.name, filterOperator: sap.ui.model.FilterOperator.EQ, flexible: true, width: "125px" }));
 		  }
-		  
-	      //this.oSHTable.setModel(oModel);
+		  */
+	     this.oSHTable.setModel(oModel);
 	     var sort1 = new sap.ui.model.Sorter("id", true);
 	     
 	     this.oSHTable.bindRows({
 				path: "/ac4ypersistentchildodata",
 	    	    parameters: {
-	    	    	$select: "id,name"},
+	    	    	$select: "id,name,createdAt"},
 	    	    //sorter: sort1
 	    	});
-		 */
+		 
 		 
 		 this.oSHTable.setTitle("Users");
 		 oLayout.createRow(this.oSHTable);

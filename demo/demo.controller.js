@@ -4,7 +4,7 @@ sap.ui.controller("demo.demo", {
 * Called when a controller is instantiated and its View controls (if available) are already created.
 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 * @memberOf demo.demo
-*/
+*//*
 	onInit: function() {
 		$.ajax({
 			url: "https://localhost:44315/odata/ac4ypersistentchildodata"
@@ -16,7 +16,7 @@ sap.ui.controller("demo.demo", {
 			oTable.bindRows("/modelData"); 
 		});
 	},
-
+*/
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 * (NOT before the first rendering! onInit() is used for that one!).
